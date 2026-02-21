@@ -19,14 +19,13 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md gradient-bg flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-sm">E</span>
+          <div className="flex items-center">
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-20 h-20 object-contain"
+              />
             </div>
-            <span className="text-surface-dark-foreground font-display text-lg font-semibold tracking-wide">
-              ELEANOR
-            </span>
-          </div>
 
           {/* Links */}
           <div className="flex flex-wrap justify-center gap-6">
@@ -47,15 +46,24 @@ const Footer = () => {
 
           {/* Social */}
           <div className="flex gap-3">
-            {[Instagram, Linkedin, Facebook].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-9 h-9 rounded-lg bg-surface-elevated border border-border/10 flex items-center justify-center text-surface-dark-foreground/40 hover:text-primary hover:border-primary/30 transition-colors"
-              >
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
+            {[
+              { icon: Instagram, href: "https://www.instagram.com/eleanorunlimited/" },
+              { icon: Linkedin, href: "https://www.linkedin.com/company/eleanor-global/" },
+              { icon: Facebook, href: "https://www.facebook.com/eleanorunlimited/" },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={i}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-surface-elevated border border-border/10 flex items-center justify-center text-surface-dark-foreground/40 hover:text-primary hover:border-primary/30 transition-colors"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              );
+            })}
           </div>
         </div>
 

@@ -9,24 +9,36 @@ const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // No backend — UI only
+    // UI only
     setForm({ name: "", email: "", message: "" });
   };
+
+  // ✅ Social Links
+  const socialLinks = [
+    { icon: Instagram, href: "https://www.instagram.com/eleanorunlimited/" },
+    { icon: Linkedin, href: "https://www.linkedin.com/company/eleanor-global/" },
+    { icon: Facebook, href: "https://www.facebook.com/eleanorunlimited/" },
+  ];
 
   return (
     <section id="contact" className="section-dark py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
           {/* Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Get in Touch</p>
+            <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+              Get in Touch
+            </p>
+
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-surface-dark-foreground mb-6">
               Let's Create Together
             </h2>
+
             <p className="text-surface-dark-foreground/60 text-lg leading-relaxed mb-8">
               Ready to bring your vision to life? Reach out and let's start a conversation.
             </p>
@@ -39,16 +51,22 @@ const ContactSection = () => {
               <span className="font-medium">info@eleanor.co</span>
             </a>
 
+            {/* ✅ Social Media Links */}
             <div className="flex gap-4">
-              {[Instagram, Linkedin, Facebook].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-10 h-10 rounded-lg bg-surface-elevated border border-border/10 flex items-center justify-center text-surface-dark-foreground/50 hover:text-primary hover:border-primary/30 transition-colors"
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
+              {socialLinks.map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <a
+                    key={i}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-lg bg-surface-elevated border border-border/10 flex items-center justify-center text-surface-dark-foreground/50 hover:text-primary hover:border-primary/30 transition-colors"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -67,6 +85,7 @@ const ContactSection = () => {
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full px-5 py-4 rounded-xl bg-surface-elevated border border-border/10 text-surface-dark-foreground placeholder:text-surface-dark-foreground/30 focus:outline-none focus:border-primary/50 transition-colors"
             />
+
             <input
               type="email"
               placeholder="Your Email"
@@ -74,6 +93,7 @@ const ContactSection = () => {
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full px-5 py-4 rounded-xl bg-surface-elevated border border-border/10 text-surface-dark-foreground placeholder:text-surface-dark-foreground/30 focus:outline-none focus:border-primary/50 transition-colors"
             />
+
             <textarea
               rows={5}
               placeholder="Your Message"
@@ -81,6 +101,7 @@ const ContactSection = () => {
               onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full px-5 py-4 rounded-xl bg-surface-elevated border border-border/10 text-surface-dark-foreground placeholder:text-surface-dark-foreground/30 focus:outline-none focus:border-primary/50 transition-colors resize-none"
             />
+
             <button
               type="submit"
               className="w-full gradient-bg text-primary-foreground py-4 rounded-xl font-semibold tracking-wide hover:opacity-90 transition-opacity glow-shadow"
@@ -88,6 +109,7 @@ const ContactSection = () => {
               Send Message
             </button>
           </motion.form>
+
         </div>
       </div>
     </section>

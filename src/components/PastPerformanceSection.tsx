@@ -4,28 +4,36 @@ import { useRef } from "react";
 const projects = [
   {
     client: "U.S. Army",
+    logo: "/us.png", // ✅ public folder
     via: "(via Agency Partner)",
     date: "2024",
     value: "$1.2M+",
-    description: "Delivered end-to-end national recruitment campaign with live-action production and post-production.",
+    description:
+      "Delivered end-to-end national recruitment campaign with live-action production and post-production.",
   },
   {
     client: "Comcast NBCUniversal",
+    logo: "/nbc.png",
     date: "2024",
     value: "$750K+",
-    description: "Produced documentary-style branded content featuring multi-city filming.",
+    description:
+      "Produced documentary-style branded content featuring multi-city filming.",
   },
   {
     client: "Walmart",
+    logo: "/wall mart.png",
     date: "2024",
     value: "$1M+",
-    description: "Executed integrated digital production generating 60+ deliverables.",
+    description:
+      "Executed integrated digital production generating 60+ deliverables.",
   },
   {
     client: "Supercell",
+    logo: "/supercell.png",
     date: "2024",
     value: "$600K+",
-    description: "Produced cinematic commercial content including live-action production and VFX integration.",
+    description:
+      "Produced cinematic commercial content including live-action production and VFX integration.",
   },
 ];
 
@@ -42,7 +50,9 @@ const PastPerformanceSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">Track Record</p>
+          <p className="text-primary font-medium tracking-widest uppercase text-sm mb-4">
+            Track Record
+          </p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-surface-dark-foreground">
             Past Performance
           </h2>
@@ -58,19 +68,35 @@ const PastPerformanceSection = () => {
               className="bg-surface-elevated border border-border/10 rounded-xl p-8 group hover:border-primary/20 transition-colors"
             >
               <div className="flex items-start justify-between mb-4">
-                {/* Logo placeholder */}
-                <div className="w-12 h-12 rounded-lg bg-surface-dark-foreground/10 flex items-center justify-center text-surface-dark-foreground/30 text-xs font-bold">
-                  LOGO
+                
+                {/* ✅ REAL COMPANY LOGO */}
+                <div className="w-12 h-12 rounded-lg bg-surface-dark-foreground/10 flex items-center justify-center overflow-hidden">
+                  <img
+                    src={project.logo}
+                    alt={project.client}
+                    className="w-10 h-10 object-contain"
+                  />
                 </div>
-                <span className="gradient-text font-bold text-xl">{project.value}</span>
+
+                <span className="gradient-text font-bold text-xl">
+                  {project.value}
+                </span>
               </div>
+
               <h3 className="text-surface-dark-foreground font-display text-xl font-semibold mb-1">
                 {project.client}
               </h3>
+
               {project.via && (
-                <p className="text-surface-dark-foreground/40 text-sm mb-2">{project.via}</p>
+                <p className="text-surface-dark-foreground/40 text-sm mb-2">
+                  {project.via}
+                </p>
               )}
-              <p className="text-surface-dark-foreground/40 text-sm mb-3">{project.date}</p>
+
+              <p className="text-surface-dark-foreground/40 text-sm mb-3">
+                {project.date}
+              </p>
+
               <p className="text-surface-dark-foreground/60 leading-relaxed text-sm">
                 {project.description}
               </p>

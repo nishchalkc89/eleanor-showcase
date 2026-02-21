@@ -41,21 +41,21 @@ const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+
+          {/* ✅ Logo Image */}
           <a
             href="#home"
             onClick={(e) => {
               e.preventDefault();
               handleClick("#home");
             }}
-            className="flex items-center gap-3"
+            className="flex items-center"
           >
-            <div className="w-10 h-10 rounded-lg gradient-bg flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">E</span>
-            </div>
-            <span className="text-surface-dark-foreground font-display text-xl font-semibold tracking-wide">
-              ELEANOR
-            </span>
+            <img
+              src="/logo.png"
+              alt="Eleanor Logo"
+              className="h-20 w-auto object-contain"
+            />
           </a>
 
           {/* Desktop Links */}
